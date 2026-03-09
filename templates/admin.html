@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Vikas College Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+        }
+        
+        .card-hover:hover::before {
+            animation: card-shine 1.5s ease-in-out;
+        }
+        
+        @keyframes card-shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4), 0 0 40px rgba(118, 75, 162, 0.3);
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite, rotate-icon 10s linear infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.6), 0 0 20px rgba(118, 75, 162, 0.3);
+            }
+            70% {
+                box-shadow: 0 0 0 25px rgba(102, 126, 234, 0), 0 0 30px rgba(118, 75, 162, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0), 0 0 20px rgba(118, 75, 162, 0.3);
+            }
+        }
+        
+        @keyframes rotate-icon {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="glass-effect shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-500 flex items-center justify-center pulse-ring shadow-2xl">
+                        <i class="fas fa-robot text-white text-3xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">Admin Panel</h1>
+                        <p class="text-sm text-white drop-shadow-lg font-semibold">Vikas College - Chatbot Training & Management</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="px-5 py-3 bg-white/20 backdrop-blur-md rounded-full border-2 border-white/30 shadow-lg">
+                        <span class="text-sm font-bold text-white drop-shadow-lg">
+                            <i class="fas fa-user-shield mr-2"></i>{{ username }}
+                        </span>
+                    </div>
+                    <a href="/logout" class="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Action Buttons -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
+            <button onclick="showSection('intents')" class="card-hover glass-effect p-7 rounded-2xl border-l-4 border-blue-500 shadow-lg">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-xl transform hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-brain text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white drop-shadow-lg text-lg">Manage Intents</h3>
+                    <p class="text-sm text-white/80 drop-shadow-md mt-2 font-medium">Add/Edit Categories</p>
+                </div>
+            </button>
+            
+            <button onclick="showSection('responses')" class="card-hover glass-effect p-7 rounded-2xl border-l-4 border-green-500 shadow-lg">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-400 via-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 shadow-xl transform hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-comments text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white drop-shadow-lg text-lg">Responses</h3>
+                    <p class="text-sm text-white/80 drop-shadow-md mt-2 font-medium">Manage Answers</p>
+                </div>
+            </button>
+            
+            <button onclick="retrainModel()" class="card-hover glass-effect p-7 rounded-2xl border-l-4 border-purple-500 shadow-lg">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-xl transform hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-cogs text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white drop-shadow-lg text-lg">Retrain Model</h3>
+                    <p class="text-sm text-white/80 drop-shadow-md mt-2 font-medium">Update AI Model</p>
+                </div>
+            </button>
+            
+            <button onclick="showSection('logs')" class="card-hover glass-effect p-7 rounded-2xl border-l-4 border-orange-500 shadow-lg">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 shadow-xl transform hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-chart-line text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white drop-shadow-lg text-lg">Chat Logs</h3>
+                    <p class="text-sm text-white/80 drop-shadow-md mt-2 font-medium">View Analytics</p>
+                </div>
+            </button>
+            
+            <button onclick="checkModelStatus()" class="card-hover glass-effect p-7 rounded-2xl border-l-4 border-cyan-500 shadow-lg" title="Check model health and debug info">
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-4 shadow-xl transform hover:rotate-6 transition-all duration-300">
+                        <i class="fas fa-stethoscope text-white text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white drop-shadow-lg text-lg">Debug Info</h3>
+                    <p class="text-sm text-white/80 drop-shadow-md mt-2 font-medium">Check Status</p>
+                </div>
+            </button>
+        </div>
+
+        <!-- Intents Section -->
+        <div id="intentsSection" class="glass-effect rounded-3xl shadow-2xl p-10 hidden slide-in border-2 border-white/30">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white drop-shadow-lg">
+                    <i class="fas fa-brain text-blue-300 mr-3"></i>Manage Intents
+                </h2>
+                <button onclick="showAddIntentModal()" class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 text-white px-8 py-4 rounded-2xl hover:shadow-2xl transition-all duration-300 font-bold hover:scale-105">
+                    <i class="fas fa-plus mr-2"></i>Add Intent
+                </button>
+            </div>
+            
+            <div id="intentsList" class="space-y-4">
+                <!-- Intents will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Responses Section -->
+        <div id="responsesSection" class="glass-effect rounded-3xl shadow-2xl p-10 hidden slide-in border-2 border-white/30">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white drop-shadow-lg">
+                    <i class="fas fa-comments text-green-300 mr-3"></i>Manage Responses
+                </h2>
+                <button onclick="showAddResponseModal()" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl hover:shadow-lg transition font-semibold">
+                    <i class="fas fa-plus mr-2"></i>Add Response
+                </button>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-3">Select Intent:</label>
+                <select id="intentSelect" onchange="loadResponses()" class="w-full px-5 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition">
+                    <option value="">-- Select an Intent --</option>
+                </select>
+            </div>
+            
+            <div id="responsesList" class="space-y-4">
+                <!-- Responses will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Logs Section -->
+        <div id="logsSection" class="glass-effect rounded-2xl shadow-xl p-8 hidden slide-in">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-chart-line text-orange-500 mr-3"></i>Chat Logs & Analytics
+            </h2>
+            
+            <div class="overflow-x-auto rounded-xl border border-gray-200">
+                <table class="w-full">
+                    <thead class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
+                        <tr>
+                            <th class="px-4 py-4 text-left font-bold">Time</th>
+                            <th class="px-4 py-4 text-left font-bold">User</th>
+                            <th class="px-4 py-4 text-left font-bold">User Message</th>
+                            <th class="px-4 py-4 text-left font-bold">Bot Response</th>
+                            <th class="px-4 py-4 text-left font-bold">Intent</th>
+                            <th class="px-4 py-4 text-left font-bold">Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody id="logsTable" class="text-sm bg-white">
+                        <!-- Logs will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Intent Modal -->
+    <div id="addIntentModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="glass-effect rounded-2xl p-8 w-full max-w-md shadow-2xl border-2 border-white/30">
+            <h3 class="text-2xl font-bold mb-6 text-white drop-shadow-lg">Add New Intent</h3>
+            <div class="mb-5">
+                <label class="block text-white font-bold mb-2 drop-shadow-lg">Intent Name</label>
+                <input type="text" id="newIntentName" class="w-full px-5 py-3 border-2 border-white/30 rounded-xl bg-white/90 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200">
+            </div>
+            <div class="mb-6">
+                <label class="block text-white font-bold mb-2 drop-shadow-lg">Description</label>
+                <textarea id="newIntentDesc" rows="3" class="w-full px-5 py-3 border-2 border-white/30 rounded-xl bg-white/90 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200"></textarea>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="addIntent()" class="flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 text-white py-3 rounded-xl hover:shadow-lg font-bold">Add</button>
+                <button onclick="closeModal('addIntentModal')" class="flex-1 bg-white/20 text-white py-3 rounded-xl hover:bg-white/30 font-bold border-2 border-white/40">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Response Modal -->
+    <div id="addResponseModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="glass-effect rounded-2xl p-8 w-full max-w-md shadow-2xl border-2 border-white/30">
+            <h3 class="text-2xl font-bold mb-6 text-white drop-shadow-lg">Add New Response</h3>
+            <div class="mb-5">
+                <label class="block text-white font-bold mb-2 drop-shadow-lg">Intent</label>
+                <select id="responseIntentSelect" class="w-full px-5 py-3 border-2 border-white/30 rounded-xl bg-white/90 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200">
+                    <option value="">-- Select Intent --</option>
+                </select>
+            </div>
+            <div class="mb-5">
+                <label class="block text-white font-bold mb-2 drop-shadow-lg">Pattern (User Question)</label>
+                <input type="text" id="newPattern" class="w-full px-5 py-3 border-2 border-white/30 rounded-xl bg-white/90 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200">
+            </div>
+            <div class="mb-6">
+                <label class="block text-white font-bold mb-2 drop-shadow-lg">Response (Bot Answer)</label>
+                <textarea id="newResponse" rows="3" class="w-full px-5 py-3 border-2 border-white/30 rounded-xl bg-white/90 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-200"></textarea>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="addResponse()" class="flex-1 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 text-white py-3 rounded-xl hover:shadow-lg font-bold">Add</button>
+                <button onclick="closeModal('addResponseModal')" class="flex-1 bg-white/20 text-white py-3 rounded-xl hover:bg-white/30 font-bold border-2 border-white/40">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

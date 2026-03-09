@@ -1,0 +1,235 @@
+{
+  "intents": [
+    {
+      "tag": "about",
+      "patterns": [
+        "company information",
+        "tell me about your institution",
+        "what is this college about"
+      ],
+      "responses": [
+        "We are a leading organization committed to innovation and excellence. Our mission is to deliver quality services while fostering growth and development.",
+        "Our institution is dedicated to providing world-class education with state-of-the-art facilities, experienced faculty, and strong industry connections.",
+        "We are a premier institution offering quality education in Engineering, Management, and Sciences. Established in 2000, we focus on academic excellence and holistic development."
+      ]
+    },
+    {
+      "tag": "admission",
+      "patterns": [
+        "eligibility criteria",
+        "when do admissions open",
+        "how to apply for admission",
+        "admission process",
+        "Admission is Open now?",
+        "Is admission open now?"
+      ],
+      "responses": [
+        "Admissions typically open in May and close in July. Please check our website for exact dates and deadlines.",
+        "Yes, you can apply through are website www.vikascollege.com.",
+        "The admission process includes: 1) Online application, 2) Document submission, 3) Entrance test (if applicable), 4) Interview, 5) Final selection and fee payment.",
+        "You can apply online through our website. Visit the Admissions section, fill out the application form, and submit the required documents. Admissions are open from May to July.",
+        "Eligibility varies by program. Generally, you need 10+2 for undergraduate and a relevant bachelor's degree for postgraduate programs. Check specific program requirements on our website.",
+        "Yess, you can apply from the website of our college www.vikascollege.com"
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "phone number",
+        "contact number of your college?",
+        "email address",
+        "contact information"
+      ],
+      "responses": [
+        "Our official email is info@college.edu. For admissions, contact admissions@college.edu. For technical support, reach support@college.edu.",
+        "You can reach us at: Phone: +91-123-456-7890, Email: info@college.edu, Website: www.college.edu. Office hours: 9 AM - 5 PM (Mon-Sat)",
+        "Contact us at +91-123-456-7890 (Main office) or +91-123-456-7891 (Admissions). We're available Monday to Saturday, 9 AM to 5 PM.",
+        "1234567890"
+      ]
+    },
+    {
+      "tag": "courses",
+      "patterns": [
+        "what courses do you offer",
+        "available programs",
+        "computer science course"
+      ],
+      "responses": [
+        "We offer B.Tech (CSE, ECE, Mechanical, Civil), MBA, MCA, M.Tech, and various diploma programs. Check our website for the complete list.",
+        "We offer B.Tech in Computer Science & Engineering (4 years) and MCA (2 years). Both programs include AI, ML, Web Development, and other modern technologies.",
+        "Available programs include Engineering, Management, Computer Applications, and Sciences at undergraduate and postgraduate levels."
+      ]
+    },
+    {
+      "tag": "fees",
+      "patterns": [
+        "scholarship available",
+        "payment options",
+        "how much are the fees",
+        "What is the fees of Bsc Computer Science?",
+        "what is the fee structure",
+        "Fees of Bsc CS?"
+      ],
+      "responses": [
+        "Fee structure varies by program. Undergraduate courses: ₹80,000-₹1,20,000 per year. Postgraduate courses: ₹60,000-₹1,00,000 per year. Hostel fees are additional.",
+        "28900/----",
+        "Annual fees range from ₹80,000 to ₹1,20,000 depending on the course. Contact the accounts department for detailed breakdown.",
+        "Yes! We offer merit-based and need-based scholarships. Eligible students can receive 10-50% fee waiver. Apply during admission or contact the scholarship office.",
+        "35000 /---",
+        "We accept payment through online transfer, debit/credit cards, demand drafts, and installments. You can pay in 2-3 installments per semester."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "take care",
+        "see you",
+        "goodbye"
+      ],
+      "responses": [
+        "Take care! We're always here to help.",
+        "Goodbye! Have a great day!",
+        "Goodbye! Take care and feel free to reach out anytime.",
+        "See you later! Feel free to return if you have more questions."
+      ]
+    },
+    {
+      "tag": "greeting",
+      "patterns": [
+        "good morning",
+        "hey",
+        "Hii",
+        "hello",
+        "good evening",
+        "hi"
+      ],
+      "responses": [
+        "Hello, How can I help you?",
+        "Hello! How can I assist you today?",
+        "Hi there! Welcome to our support chatbot. How may I help you?",
+        "Hi, How can i help you?",
+        "Good evening! What brings you here today?",
+        "Hey! What can I do for you today?",
+        "Good morning! How can I help you?"
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "how do you work",
+        "what can you do",
+        "i need help"
+      ],
+      "responses": [
+        "I can help you with information about admissions, courses, fees, placements, hostel, library, contact details, and general queries. Just ask away!",
+        "I use AI to understand your questions and provide relevant answers. I'm trained on college/company information. Ask me anything!",
+        "I'm here to help! You can ask me about admissions, fees, courses, placements, facilities, or any other queries. What would you like to know?"
+      ]
+    },
+    {
+      "tag": "Hii",
+      "patterns": [
+        "Is admission open?"
+      ],
+      "responses": [
+        "Yes , You can apply from our website www.vikascollege.com"
+      ]
+    },
+    {
+      "tag": "hostel",
+      "patterns": [
+        "hostel availability",
+        "hostel fees",
+        "hostel facilities"
+      ],
+      "responses": [
+        "Hostel fees are approximately ₹60,000-₹80,000 per year including accommodation and food. AC rooms are available at higher rates.",
+        "We have separate boys and girls hostels with 24/7 security, WiFi, mess facilities, gym, and recreation rooms. Rooms are available in 2-3 sharing options.",
+        "Hostel accommodation is available on first-come-first-served basis. Apply during admission. Contact the hostel warden for availability."
+      ]
+    },
+    {
+      "tag": "leave_policy",
+      "patterns": [
+        "leave policy",
+        "sick leave",
+        "attendance requirement"
+      ],
+      "responses": [
+        "For sick leave, submit a medical certificate to your department within 3 days. Prolonged illness requires approval from the Dean.",
+        "Students must maintain 75% attendance. Leave requires prior approval and valid documentation. Medical leaves need doctor's certificate.",
+        "Minimum 75% attendance is mandatory. Below this, you may not be eligible for exams. Genuine cases are considered with proper documentation."
+      ]
+    },
+    {
+      "tag": "library",
+      "patterns": [
+        "library facilities",
+        "library timings",
+        "book borrowing"
+      ],
+      "responses": [
+        "Our library has 50,000+ books, e-journals, digital resources, study rooms, computer terminals, and a peaceful reading environment.",
+        "The library is open from 8:00 AM to 8:00 PM on weekdays and 9:00 AM to 5:00 PM on weekends. During exams, extended hours till 10:00 PM are available.",
+        "Students can borrow up to 3 books for 15 days. Renewal is possible if no other requests are pending. Late returns incur a small fine."
+      ]
+    },
+    {
+      "tag": "placement",
+      "patterns": [
+        "internship opportunities",
+        "placement record",
+        "placement training",
+        "top recruiters"
+      ],
+      "responses": [
+        "We facilitate internships in leading companies. Students can do summer internships after 2nd/3rd year. Many internships convert to full-time offers.",
+        "Our placement record is excellent! 85% of students get placed with an average package of ₹4.5 LPA. Top packages reach ₹12-15 LPA.",
+        "Yes! We provide comprehensive placement training including aptitude, technical skills, communication, and interview preparation from the 3rd year onwards.",
+        "Top recruiters include TCS, Infosys, Wipro, Cognizant, Amazon, Microsoft, and many startups. We have 200+ partner companies."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "appreciate it",
+        "thank you",
+        "thanks",
+        "thanks a lot"
+      ],
+      "responses": [
+        "Glad I could help! Feel free to ask more questions.",
+        "You're welcome! Happy to help!",
+        "You're welcome! Let me know if you need anything else.",
+        "You're very welcome! Have a great day!"
+      ]
+    },
+    {
+      "tag": "timings",
+      "patterns": [
+        "working hours",
+        "What is the Timing of College?",
+        "office timings",
+        "class timings"
+      ],
+      "responses": [
+        "Office timings: Monday to Saturday, 9:00 AM to 5:00 PM. Closed on Sundays and public holidays.",
+        "Classes run from 9:00 AM to 4:00 PM with breaks. Exact schedule varies by program and semester. Check your timetable for details.",
+        "We operate Monday to Saturday, 9:00 AM to 5:00 PM. For urgent matters, contact the 24/7 helpline: +91-123-456-7890.",
+        "2:15-3:15"
+      ]
+    },
+    {
+      "tag": "unknown",
+      "patterns": [
+        "unknown query",
+        "fallback"
+      ],
+      "responses": [
+        "I'm not sure about that. Please try asking in a different way or contact our support team at +91-123-456-7890.",
+        "I'm sorry, I didn't quite understand that. Could you please rephrase your question? You can ask about admissions, courses, fees, placements, or facilities."
+      ]
+    }
+  ]
+}

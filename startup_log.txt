@@ -1,0 +1,51 @@
+[2026-01-05 17:22:21.223853] ==================================================
+[2026-01-05 17:22:21.225368] Starting diagnostic...
+[2026-01-05 17:22:21.226024] 1. Testing Flask...
+[2026-01-05 17:22:21.896695]    ✓ Flask OK
+[2026-01-05 17:22:21.897364] 2. Testing NLTK...
+[2026-01-05 17:22:26.029477]    ✓ NLTK OK
+[2026-01-05 17:22:26.030316] 3. Testing utils.db_manager...
+[2026-01-05 17:22:26.216073]    ✓ DatabaseManager import OK
+[2026-01-05 17:22:26.216755] 4. Testing utils.nlp_processor...
+[2026-01-05 17:22:26.217449]    ✓ NLPProcessor import OK
+[2026-01-05 17:22:26.218024] 5. Initializing NLPProcessor...
+[2026-01-05 17:22:26.219715]    ✗ NLPProcessor error: No such file or directory: 'C:\\Users\\aftab\\AppData\\Roaming\\nltk_data\\tokenizers\\punkt\\PY3_tab'
+[2026-01-05 17:22:26.224012] Traceback (most recent call last):
+  File "F:\PROJECT'S\Chatbot\diagnose.py", line 45, in <module>
+    nlp = NLPProcessor()
+  File "F:\PROJECT'S\Chatbot\utils\nlp_processor.py", line 33, in __init__
+    nltk.data.find('tokenizers/punkt_tab')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\PROJECT'S\Chatbot\.venv\Lib\site-packages\nltk\data.py", line 537, in find
+    return FileSystemPathPointer(p)
+  File "F:\PROJECT'S\Chatbot\.venv\Lib\site-packages\nltk\compat.py", line 41, in _decorator
+    return init_func(*args, **kwargs)
+  File "F:\PROJECT'S\Chatbot\.venv\Lib\site-packages\nltk\data.py", line 312, in __init__
+    raise OSError("No such file or directory: %r" % _path)
+OSError: No such file or directory: 'C:\\Users\\aftab\\AppData\\Roaming\\nltk_data\\tokenizers\\punkt\\PY3_tab'
+
+[2026-01-05 17:22:50.118423] ==================================================
+[2026-01-05 17:22:50.119346] Starting diagnostic...
+[2026-01-05 17:22:50.120340] 1. Testing Flask...
+[2026-01-05 17:22:50.791098]    ✓ Flask OK
+[2026-01-05 17:22:50.792324] 2. Testing NLTK...
+[2026-01-05 17:22:54.745581]    ✓ NLTK OK
+[2026-01-05 17:22:54.747767] 3. Testing utils.db_manager...
+[2026-01-05 17:22:54.864887]    ✓ DatabaseManager import OK
+[2026-01-05 17:22:54.865734] 4. Testing utils.nlp_processor...
+[2026-01-05 17:22:54.866412]    ✓ NLPProcessor import OK
+[2026-01-05 17:22:54.867156] 5. Initializing NLPProcessor...
+[2026-01-05 17:34:42.146220]    ✓ NLPProcessor initialized OK
+[2026-01-05 17:34:42.146696] 6. Loading app.py...
+[2026-01-05 17:34:42.175823]    ✗ app.py error: No module named 'aifc'
+[2026-01-05 17:34:42.208917] Traceback (most recent call last):
+  File "F:\PROJECT'S\Chatbot\diagnose.py", line 55, in <module>
+    import app
+  File "F:\PROJECT'S\Chatbot\app.py", line 17, in <module>
+    import speech_recognition as sr
+  File "F:\PROJECT'S\Chatbot\.venv\Lib\site-packages\speech_recognition\__init__.py", line 7, in <module>
+    import aifc
+ModuleNotFoundError: No module named 'aifc'
+
+[2026-01-05 17:34:42.209459] Diagnostic complete!
+[2026-01-05 17:34:42.209711] ==================================================
