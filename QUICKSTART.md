@@ -4,7 +4,7 @@ Get your chatbot up and running in 10 minutes!
 
 ---
 
-## ⚡ Prerequisites Checklist
+##  Prerequisites Checklist
 
 Before starting, ensure you have:
 
@@ -15,7 +15,7 @@ Before starting, ensure you have:
 
 ---
 
-## 🚀 5-Step Quick Setup
+##  5-Step Quick Setup
 
 ### Step 1: Setup Virtual Environment (2 min)
 
@@ -88,18 +88,18 @@ python app.py
 
 ---
 
-## 🎯 Default Credentials
+##  Default Credentials
 
 **Admin Login:** http://localhost:5000/login
 
 - Username: `admin`
 - Password: `admin123`
 
-⚠️ Change these in production!
+ Change these in production!
 
 ---
 
-## ✅ Quick Test
+##  Quick Test
 
 Try these queries in the chatbot:
 
@@ -113,7 +113,7 @@ All should get relevant responses!
 
 ---
 
-## 🐛 Quick Troubleshooting
+##  Quick Troubleshooting
 
 **Problem:** `python: command not found`  
 **Fix:** Try `python3` or `py` instead
@@ -129,17 +129,17 @@ All should get relevant responses!
 
 ---
 
-## 📚 Next Steps
+##  Next Steps
 
-1. ✅ Test chatbot with different queries
-2. ✅ Login to admin panel
-3. ✅ Add a new intent
-4. ✅ Retrain the model
-5. ✅ Read full documentation in `/docs`
+1.  Test chatbot with different queries
+2.  Login to admin panel
+3.  Add a new intent
+4.  Retrain the model
+5.  Read full documentation in `/docs`
 
 ---
 
-## 🎓 For Viva Preparation
+##  For Viva Preparation
 
 **Key Points to Remember:**
 - Accuracy: 95%
@@ -160,7 +160,7 @@ Read `docs/VIVA_PREPARATION.md` for detailed Q&A!
 
 ---
 
-## 📞 Need Help?
+##  Need Help?
 
 1. Check `docs/SETUP_GUIDE.md` for detailed instructions
 2. Review error messages in terminal

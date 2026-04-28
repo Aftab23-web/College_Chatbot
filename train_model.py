@@ -65,7 +65,7 @@ class IntentClassifier:
         Returns:
             tuple: (patterns, labels)
         """
-        print(f"📂 Loading training data from {filepath}...")
+        print(f" Loading training data from {filepath}...")
         
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -92,7 +92,7 @@ class IntentClassifier:
         Returns:
             list: Preprocessed patterns
         """
-        print("🔄 Preprocessing text data...")
+        print(" Preprocessing text data...")
         preprocessed = self.nlp_processor.preprocess_batch(patterns)
         print(f"✓ Preprocessed {len(preprocessed)} patterns")
         return preprocessed
@@ -117,12 +117,12 @@ class IntentClassifier:
         
         # Store unique intent labels
         self.intent_labels = sorted(list(set(labels)))
-        print(f"📊 Intent Classes: {len(self.intent_labels)}")
+        print(f" Intent Classes: {len(self.intent_labels)}")
         
         # Check if we have enough data for test split (need at least 2 samples per class for stratified split)
         min_samples_needed = len(self.intent_labels) * 2
         if len(patterns) < min_samples_needed or len(patterns) * test_size < len(self.intent_labels):
-            print(f"⚠️  Small dataset ({len(patterns)} patterns, {len(self.intent_labels)} classes): Using entire dataset for training and testing")
+            print(f"  Small dataset ({len(patterns)} patterns, {len(self.intent_labels)} classes): Using entire dataset for training and testing")
             X_train = preprocessed_patterns
             y_train = labels
             X_test = preprocessed_patterns
@@ -137,18 +137,18 @@ class IntentClassifier:
                 stratify=labels
             )
         
-        print(f"📚 Training samples: {len(X_train)}")
-        print(f"📝 Testing samples: {len(X_test)}")
+        print(f" Training samples: {len(X_train)}")
+        print(f" Testing samples: {len(X_test)}")
         
         # TF-IDF Vectorization
-        print("\n🔢 Creating TF-IDF features...")
+        print("\n Creating TF-IDF features...")
         X_train_tfidf = self.vectorizer.fit_transform(X_train)
         X_test_tfidf = self.vectorizer.transform(X_test)
         
         print(f"✓ Feature dimensions: {X_train_tfidf.shape[1]}")
         
         # Train classifier
-        print("\n🎯 Training Logistic Regression classifier...")
+        print("\n Training Logistic Regression classifier...")
         self.classifier.fit(X_train_tfidf, y_train)
         print("✓ Model training completed")
         
@@ -182,7 +182,7 @@ class IntentClassifier:
     def _print_evaluation(self, metrics, y_test, y_pred):
         """Print detailed evaluation metrics"""
         print("\n" + "=" * 60)
-        print("📊 MODEL EVALUATION RESULTS")
+        print(" MODEL EVALUATION RESULTS")
         print("=" * 60)
         print(f"Accuracy:           {metrics['accuracy']:.4f} ({metrics['accuracy']*100:.2f}%)")
         print(f"Precision:          {metrics['precision']:.4f}")
@@ -192,11 +192,11 @@ class IntentClassifier:
         print("=" * 60)
         
         # Classification report
-        print("\n📋 DETAILED CLASSIFICATION REPORT:")
+        print("\n DETAILED CLASSIFICATION REPORT:")
         print(classification_report(y_test, y_pred, zero_division=0))
         
         # Confusion matrix
-        print("\n🔄 CONFUSION MATRIX:")
+        print("\n CONFUSION MATRIX:")
         cm = confusion_matrix(y_test, y_pred, labels=self.intent_labels)
         print(cm)
     
@@ -298,15 +298,15 @@ def main():
     metrics = classifier.train(patterns, labels)
     
     # Save model
-    print("\n💾 Saving trained model...")
+    print("\n Saving trained model...")
     classifier.save_model()
     
     print("\n" + "=" * 60)
-    print("✅ TRAINING COMPLETED SUCCESSFULLY!")
+    print(" TRAINING COMPLETED SUCCESSFULLY!")
     print("=" * 60)
     
     # Test predictions
-    print("\n🧪 Testing Sample Predictions:")
+    print("\n Testing Sample Predictions:")
     print("-" * 60)
     
     test_queries = [
@@ -323,7 +323,7 @@ def main():
         print()
     
     print("=" * 60)
-    print("🎉 Model is ready to use!")
+    print(" Model is ready to use!")
     print("=" * 60 + "\n")
 
 

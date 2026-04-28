@@ -14,18 +14,18 @@ def print_header(text):
 
 def check_python_version():
     """Check Python version"""
-    print("\n📌 Checking Python Version...")
+    print("\n Checking Python Version...")
     version = sys.version_info
     if version.major >= 3 and version.minor >= 8:
-        print(f"✅ Python {version.major}.{version.minor}.{version.micro} - OK")
+        print(f" Python {version.major}.{version.minor}.{version.micro} - OK")
         return True
     else:
-        print(f"❌ Python {version.major}.{version.minor} - Need 3.8+")
+        print(f" Python {version.major}.{version.minor} - Need 3.8+")
         return False
 
 def check_dependencies():
     """Check if all required packages are installed"""
-    print("\n📌 Checking Dependencies...")
+    print("\n Checking Dependencies...")
     
     required_packages = [
         'flask',
@@ -52,16 +52,16 @@ def check_dependencies():
                 __import__('dotenv')
             else:
                 __import__(package)
-            print(f"  ✅ {package}")
+            print(f"   {package}")
         except ImportError:
-            print(f"  ❌ {package} - NOT INSTALLED")
+            print(f"   {package} - NOT INSTALLED")
             all_installed = False
     
     return all_installed
 
 def check_nltk_data():
     """Check if NLTK data is downloaded"""
-    print("\n📌 Checking NLTK Data...")
+    print("\n Checking NLTK Data...")
     
     try:
         import nltk
@@ -72,19 +72,19 @@ def check_nltk_data():
         for data in required_data:
             try:
                 nltk.data.find(f'tokenizers/{data}') if data == 'punkt' else nltk.data.find(f'corpora/{data}')
-                print(f"  ✅ {data}")
+                print(f"   {data}")
             except LookupError:
-                print(f"  ❌ {data} - NOT DOWNLOADED")
+                print(f"   {data} - NOT DOWNLOADED")
                 all_present = False
         
         return all_present
     except Exception as e:
-        print(f"  ❌ Error: {e}")
+        print(f"   Error: {e}")
         return False
 
 def check_database():
     """Check database connection"""
-    print("\n📌 Checking Database Connection...")
+    print("\n Checking Database Connection...")
     
     try:
         import mysql.connector
@@ -109,34 +109,34 @@ def check_database():
             required_tables = ['intents', 'responses', 'chat_logs', 'admin_users']
             found_tables = [table[0] for table in tables]
             
-            print(f"  ✅ Connected to database")
+            print(f"   Connected to database")
             
             for table in required_tables:
                 if table in found_tables:
-                    print(f"  ✅ Table '{table}' exists")
+                    print(f"   Table '{table}' exists")
                 else:
-                    print(f"  ❌ Table '{table}' missing")
+                    print(f"   Table '{table}' missing")
             
             # Check sample data
             cursor.execute("SELECT COUNT(*) FROM intents")
             intent_count = cursor.fetchone()[0]
-            print(f"  ℹ️  Intents in database: {intent_count}")
+            print(f"    Intents in database: {intent_count}")
             
             cursor.execute("SELECT COUNT(*) FROM responses")
             response_count = cursor.fetchone()[0]
-            print(f"  ℹ️  Responses in database: {response_count}")
+            print(f"    Responses in database: {response_count}")
             
             cursor.close()
             connection.close()
             return True
     except Exception as e:
-        print(f"  ❌ Database Error: {e}")
-        print(f"  💡 Tip: Check MySQL is running and credentials in .env file")
+        print(f"   Database Error: {e}")
+        print(f"   Tip: Check MySQL is running and credentials in .env file")
         return False
 
 def check_model_files():
     """Check if ML model files exist"""
-    print("\n📌 Checking ML Model Files...")
+    print("\n Checking ML Model Files...")
     
     model_dir = 'models'
     required_files = [
@@ -151,19 +151,19 @@ def check_model_files():
         file_path = os.path.join(model_dir, file)
         if os.path.exists(file_path):
             size = os.path.getsize(file_path)
-            print(f"  ✅ {file} ({size} bytes)")
+            print(f"   {file} ({size} bytes)")
         else:
-            print(f"  ❌ {file} - NOT FOUND")
+            print(f"   {file} - NOT FOUND")
             all_present = False
     
     if not all_present:
-        print(f"  💡 Tip: Run 'python train_model.py' to generate model files")
+        print(f"   Tip: Run 'python train_model.py' to generate model files")
     
     return all_present
 
 def check_intents_file():
     """Check if intents.json exists"""
-    print("\n📌 Checking Training Data...")
+    print("\n Checking Training Data...")
     
     if os.path.exists('intents.json'):
         try:
@@ -176,23 +176,23 @@ def check_intents_file():
                 for intent in data.get('intents', []):
                     total_patterns += len(intent.get('patterns', []))
                 
-                print(f"  ✅ intents.json found")
-                print(f"  ℹ️  Intents: {intent_count}")
-                print(f"  ℹ️  Training patterns: {total_patterns}")
+                print(f"   intents.json found")
+                print(f"    Intents: {intent_count}")
+                print(f"    Training patterns: {total_patterns}")
                 return True
         except Exception as e:
-            print(f"  ❌ Error reading intents.json: {e}")
+            print(f"   Error reading intents.json: {e}")
             return False
     else:
-        print(f"  ❌ intents.json not found")
+        print(f"   intents.json not found")
         return False
 
 def check_env_file():
     """Check if .env file is configured"""
-    print("\n📌 Checking Configuration...")
+    print("\n Checking Configuration...")
     
     if os.path.exists('.env'):
-        print(f"  ✅ .env file exists")
+        print(f"   .env file exists")
         
         from dotenv import load_dotenv
         load_dotenv()
@@ -202,19 +202,19 @@ def check_env_file():
         secret_key = os.getenv('SECRET_KEY', '')
         
         if not db_password:
-            print(f"  ⚠️  DB_PASSWORD is empty - update in .env file")
+            print(f"    DB_PASSWORD is empty - update in .env file")
         else:
-            print(f"  ✅ DB_PASSWORD is set")
+            print(f"   DB_PASSWORD is set")
         
         if 'change' in secret_key.lower() or not secret_key:
-            print(f"  ⚠️  SECRET_KEY needs to be changed")
+            print(f"    SECRET_KEY needs to be changed")
         else:
-            print(f"  ✅ SECRET_KEY is set")
+            print(f"   SECRET_KEY is set")
         
         return True
     else:
-        print(f"  ❌ .env file not found")
-        print(f"  💡 Tip: Copy .env.example to .env and configure")
+        print(f"   .env file not found")
+        print(f"   Tip: Copy .env.example to .env and configure")
         return False
 
 def test_nlp_processing():
@@ -228,12 +228,12 @@ def test_nlp_processing():
         test_text = "Hello! How can I apply for admission?"
         processed = processor.preprocess(test_text)
         
-        print(f"  ✅ NLP Processor initialized")
-        print(f"  ℹ️  Test input: '{test_text}'")
-        print(f"  ℹ️  Processed: '{processed}'")
+        print(f"   NLP Processor initialized")
+        print(f"   Test input: '{test_text}'")
+        print(f"   Processed: '{processed}'")
         return True
     except Exception as e:
-        print(f"  ❌ Error: {e}")
+        print(f"   Error: {e}")
         return False
 
 def run_verification():
@@ -270,8 +270,8 @@ def run_verification():
         print("  2. Open: http://localhost:5000")
         print("  3. Test the chatbot!")
     else:
-        print("\n⚠️  Some checks failed. Please fix the issues above.")
-        print("\n💡 Common fixes:")
+        print("\n  Some checks failed. Please fix the issues above.")
+        print("\n Common fixes:")
         print("  - Dependencies: pip install -r requirements.txt")
         print("  - NLTK Data: python -c \"import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet')\"")
         print("  - Database: mysql -u root -p chatbot_db < database/schema.sql")
@@ -287,8 +287,8 @@ if __name__ == "__main__":
         success = run_verification()
         sys.exit(0 if success else 1)
     except KeyboardInterrupt:
-        print("\n\n❌ Verification cancelled by user")
+        print("\n\n Verification cancelled by user")
         sys.exit(1)
     except Exception as e:
-        print(f"\n\n❌ Unexpected error: {e}")
+        print(f"\n\n Unexpected error: {e}")
         sys.exit(1)

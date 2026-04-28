@@ -1,4 +1,4 @@
-# 🤖 AI-Based Chatbot for College/Company Support
+#  AI-Based Chatbot for College/Company Support
 
 **A Final-Year Computer Science Project**
 
@@ -6,7 +6,7 @@ An intelligent chatbot system with NLP-powered intent classification, voice supp
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -20,15 +20,15 @@ An intelligent chatbot system with NLP-powered intent classification, voice supp
 
 ---
 
-## ✨ Features
+##  Features
 
 ### Core Functionality
-- 💬 **Text-based Chat**: Type queries and get intelligent responses
-- 🎤 **Voice Support**: Speech-to-Text input and Text-to-Speech output
-- 🤖 **Intent Classification**: AI-powered understanding using NLP
-- 📊 **Admin Panel**: Train and manage the chatbot
-- 💾 **Database Integration**: MySQL for persistent storage
-- 📝 **Chat Logging**: Track all conversations
+-  **Text-based Chat**: Type queries and get intelligent responses
+-  **Voice Support**: Speech-to-Text input and Text-to-Speech output
+-  **Intent Classification**: AI-powered understanding using NLP
+-  **Admin Panel**: Train and manage the chatbot
+-  **Database Integration**: MySQL for persistent storage
+-  **Chat Logging**: Track all conversations
 
 ### AI/ML Capabilities
 - TF-IDF vectorization for text representation
@@ -39,7 +39,7 @@ An intelligent chatbot system with NLP-powered intent classification, voice supp
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Backend:**
 - Python 3.8+
@@ -62,43 +62,9 @@ An intelligent chatbot system with NLP-powered intent classification, voice supp
 
 ---
 
-## 📁 Project Structure
 
-```
-Chatbot/
-├── app.py                      # Main Flask application
-├── train_model.py              # ML training script
-├── intents.json                # Training dataset
-├── requirements.txt            # Python dependencies
-├── .env.example                # Environment variables template
-├── database/
-│   └── schema.sql              # MySQL database schema
-├── models/
-│   ├── intent_classifier.pkl   # Trained model (generated)
-│   └── vectorizer.pkl          # TF-IDF vectorizer (generated)
-├── static/
-│   ├── css/
-│   │   └── style.css           # Custom styles
-│   └── js/
-│       ├── chat.js             # Chat interface logic
-│       └── admin.js            # Admin panel logic
-├── templates/
-│   ├── index.html              # Main chatbot interface
-│   ├── admin.html              # Admin panel
-│   └── login.html              # Admin login
-├── utils/
-│   ├── __init__.py
-│   ├── nlp_processor.py        # NLP preprocessing
-│   └── db_manager.py           # Database operations
-└── docs/
-    ├── SETUP_GUIDE.md          # Detailed setup instructions
-    ├── VIVA_PREPARATION.md     # Viva Q&A guide
-    └── PROJECT_REPORT.md       # Project documentation
-```
 
----
-
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -164,8 +130,7 @@ python train_model.py
 ```
 
 ---
-
-## ▶️ How to Run
+##  How to Run
 
 ### Start the Application
 ```bash
@@ -181,11 +146,11 @@ The application will be available at:
 - **Username**: admin
 - **Password**: admin123
 
-⚠️ **Change these credentials in production!**
+ **Change these credentials in production!**
 
 ---
 
-## 📖 Usage Guide
+##  Usage Guide
 
 ### For End Users
 1. Open http://localhost:5000
@@ -202,7 +167,7 @@ The application will be available at:
 
 ---
 
-## 🧠 AI/ML Logic Explanation
+##  AI/ML Logic Explanation
 
 ### Why Intent Classification?
 Intent classification is chosen because:
@@ -250,7 +215,7 @@ intents.json → Preprocessing → TF-IDF → Logistic Regression → Save Model
 
 ---
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 1. **GPT Integration**
    - Use OpenAI API for more natural responses
@@ -284,7 +249,7 @@ intents.json → Preprocessing → TF-IDF → Logistic Regression → Save Model
 
 ---
 
-## 📚 Academic Disclaimer
+##  Academic Disclaimer
 
 This project is developed for educational purposes as part of a Computer Science final-year project. It demonstrates:
 - Software engineering principles
@@ -296,26 +261,10 @@ This project is developed for educational purposes as part of a Computer Science
 
 ---
 
-## 📄 License
+##  License
 
 This project is for academic use only. Feel free to modify and extend for your learning purposes.
 
 ---
 
-## 👨‍💻 Author
-
-**Computer Science Final Year Project**  
-Year: 2025-2026
-
----
-
-## 🤝 Support
-
-For issues or questions:
-1. Check the documentation in `/docs` folder
-2. Review `VIVA_PREPARATION.md` for common questions
-3. Refer to `SETUP_GUIDE.md` for troubleshooting
-
----
-
-**Happy Coding! 🚀**
+**Happy Coding! **
